@@ -20,7 +20,17 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/', indexRouter);
+// express
+app.all('*', function(req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*"); // 允许访问的域，* 代表所有，生产环境建议填写具体的域名，如 http://www.faychou.com
+  res.header("Access-Control-Allow-Headers", "Content-Type,X-Requested-With,Accept,Authorization"); // 表示服务器将会支持的请求头部值
+  res.header("Access-Control-Allow-Methods", "PUT,POST,GET,DELETE,OPTIONS"); // 允许的请求方式
+  res.header('Access-Control-Allow-Credentials', 'true'); // 和客户端对应，必须设置以后，才能接收cookie
+  next(); // 交给后面的中间件继续处理
+});
+
+// 在这之后，处理 API
+
 app.use('/users', usersRouter);
 
 // catch 404 and forward to error handler
