@@ -7,6 +7,7 @@ var logger = require('morgan');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
+var vipRouter = require('./routes/vip');
 
 var app = express();
 
@@ -30,8 +31,9 @@ app.all('*', function(req, res, next) {
 });
 
 // 在这之后，处理 API
-
+app.use('', indexRouter);
 app.use('/users', usersRouter);
+app.use('/vip', vipRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
