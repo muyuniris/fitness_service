@@ -11,7 +11,7 @@
     "debug": "~2.6.9",
     "ejs": "~2.6.1",
     "express": "~4.16.1",
-    "express-jwt": "^5.3.3",
+    "express-jwt": "^6.0.0",
     "http-errors": "~1.6.3",
     "jsonwebtoken": "^8.5.1",
     "leancloud-storage": "^4.5.0",
